@@ -15,8 +15,8 @@ namespace TitanSouls.Save {
                 return default;
             }
 
-            var formatter = new BinaryFormatter();
             using (var stream = new MemoryStream()) {
+                var formatter = new BinaryFormatter();
                 formatter.Serialize(stream, source);
                 stream.Seek(0, SeekOrigin.Begin);
                 return (T)formatter.Deserialize(stream);

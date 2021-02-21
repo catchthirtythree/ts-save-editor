@@ -24,8 +24,6 @@ namespace TitanSouls.Forms {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.txt_map = new System.Windows.Forms.TextBox();
-            this.txt_save_point = new System.Windows.Forms.TextBox();
             this.txt_player_position_x = new System.Windows.Forms.TextBox();
             this.num_deaths = new System.Windows.Forms.NumericUpDown();
             this.num_kills = new System.Windows.Forms.NumericUpDown();
@@ -75,23 +73,13 @@ namespace TitanSouls.Forms {
             this.chk_elder_dead = new System.Windows.Forms.CheckBox();
             this.chk_ghost_dead = new System.Windows.Forms.CheckBox();
             this.txt_hash = new System.Windows.Forms.TextBox();
+            this.cb_map = new System.Windows.Forms.ComboBox();
+            this.chk_plant12_dead = new System.Windows.Forms.CheckBox();
+            this.chk_eyecube2_dead = new System.Windows.Forms.CheckBox();
+            this.cb_respawn_point = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_deaths)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_kills)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txt_map
-            // 
-            this.txt_map.Location = new System.Drawing.Point(0, 0);
-            this.txt_map.Name = "txt_map";
-            this.txt_map.Size = new System.Drawing.Size(229, 27);
-            this.txt_map.TabIndex = 0;
-            // 
-            // txt_save_point
-            // 
-            this.txt_save_point.Location = new System.Drawing.Point(0, 34);
-            this.txt_save_point.Name = "txt_save_point";
-            this.txt_save_point.Size = new System.Drawing.Size(229, 27);
-            this.txt_save_point.TabIndex = 1;
             // 
             // txt_player_position_x
             // 
@@ -209,9 +197,9 @@ namespace TitanSouls.Forms {
             this.chk_truthdoorlook.AutoSize = true;
             this.chk_truthdoorlook.Location = new System.Drawing.Point(240, 350);
             this.chk_truthdoorlook.Name = "chk_truthdoorlook";
-            this.chk_truthdoorlook.Size = new System.Drawing.Size(142, 24);
+            this.chk_truthdoorlook.Size = new System.Drawing.Size(138, 24);
             this.chk_truthdoorlook.TabIndex = 19;
-            this.chk_truthdoorlook.Text = "Truth Door Open";
+            this.chk_truthdoorlook.Text = "Truth Door Look";
             this.chk_truthdoorlook.UseVisualStyleBackColor = true;
             // 
             // chk_kingtitan
@@ -372,7 +360,7 @@ namespace TitanSouls.Forms {
             // chk_avarice_dead
             // 
             this.chk_avarice_dead.AutoSize = true;
-            this.chk_avarice_dead.Location = new System.Drawing.Point(488, 380);
+            this.chk_avarice_dead.Location = new System.Drawing.Point(488, 440);
             this.chk_avarice_dead.Name = "chk_avarice_dead";
             this.chk_avarice_dead.Size = new System.Drawing.Size(120, 24);
             this.chk_avarice_dead.TabIndex = 38;
@@ -382,7 +370,7 @@ namespace TitanSouls.Forms {
             // chk_knight_dead
             // 
             this.chk_knight_dead.AutoSize = true;
-            this.chk_knight_dead.Location = new System.Drawing.Point(488, 350);
+            this.chk_knight_dead.Location = new System.Drawing.Point(488, 410);
             this.chk_knight_dead.Name = "chk_knight_dead";
             this.chk_knight_dead.Size = new System.Drawing.Size(114, 24);
             this.chk_knight_dead.TabIndex = 37;
@@ -392,7 +380,7 @@ namespace TitanSouls.Forms {
             // chk_plant_dead
             // 
             this.chk_plant_dead.AutoSize = true;
-            this.chk_plant_dead.Location = new System.Drawing.Point(488, 320);
+            this.chk_plant_dead.Location = new System.Drawing.Point(488, 350);
             this.chk_plant_dead.Name = "chk_plant_dead";
             this.chk_plant_dead.Size = new System.Drawing.Size(104, 24);
             this.chk_plant_dead.TabIndex = 36;
@@ -402,7 +390,7 @@ namespace TitanSouls.Forms {
             // chk_mushroom_dead
             // 
             this.chk_mushroom_dead.AutoSize = true;
-            this.chk_mushroom_dead.Location = new System.Drawing.Point(488, 290);
+            this.chk_mushroom_dead.Location = new System.Drawing.Point(488, 320);
             this.chk_mushroom_dead.Name = "chk_mushroom_dead";
             this.chk_mushroom_dead.Size = new System.Drawing.Size(142, 24);
             this.chk_mushroom_dead.TabIndex = 35;
@@ -412,7 +400,7 @@ namespace TitanSouls.Forms {
             // chk_colossus_dead
             // 
             this.chk_colossus_dead.AutoSize = true;
-            this.chk_colossus_dead.Location = new System.Drawing.Point(488, 260);
+            this.chk_colossus_dead.Location = new System.Drawing.Point(488, 290);
             this.chk_colossus_dead.Name = "chk_colossus_dead";
             this.chk_colossus_dead.Size = new System.Drawing.Size(128, 24);
             this.chk_colossus_dead.TabIndex = 34;
@@ -422,7 +410,7 @@ namespace TitanSouls.Forms {
             // chk_brainfreeze_dead
             // 
             this.chk_brainfreeze_dead.AutoSize = true;
-            this.chk_brainfreeze_dead.Location = new System.Drawing.Point(488, 230);
+            this.chk_brainfreeze_dead.Location = new System.Drawing.Point(488, 260);
             this.chk_brainfreeze_dead.Name = "chk_brainfreeze_dead";
             this.chk_brainfreeze_dead.Size = new System.Drawing.Size(146, 24);
             this.chk_brainfreeze_dead.TabIndex = 33;
@@ -452,7 +440,7 @@ namespace TitanSouls.Forms {
             // chk_thesoul_dead
             // 
             this.chk_thesoul_dead.AutoSize = true;
-            this.chk_thesoul_dead.Location = new System.Drawing.Point(739, 380);
+            this.chk_thesoul_dead.Location = new System.Drawing.Point(725, 410);
             this.chk_thesoul_dead.Name = "chk_thesoul_dead";
             this.chk_thesoul_dead.Size = new System.Drawing.Size(128, 24);
             this.chk_thesoul_dead.TabIndex = 46;
@@ -462,7 +450,7 @@ namespace TitanSouls.Forms {
             // chk_guardian_dead
             // 
             this.chk_guardian_dead.AutoSize = true;
-            this.chk_guardian_dead.Location = new System.Drawing.Point(739, 350);
+            this.chk_guardian_dead.Location = new System.Drawing.Point(725, 380);
             this.chk_guardian_dead.Name = "chk_guardian_dead";
             this.chk_guardian_dead.Size = new System.Drawing.Size(131, 24);
             this.chk_guardian_dead.TabIndex = 45;
@@ -472,7 +460,7 @@ namespace TitanSouls.Forms {
             // chk_snowface_dead
             // 
             this.chk_snowface_dead.AutoSize = true;
-            this.chk_snowface_dead.Location = new System.Drawing.Point(739, 320);
+            this.chk_snowface_dead.Location = new System.Drawing.Point(725, 350);
             this.chk_snowface_dead.Name = "chk_snowface_dead";
             this.chk_snowface_dead.Size = new System.Drawing.Size(135, 24);
             this.chk_snowface_dead.TabIndex = 44;
@@ -482,7 +470,7 @@ namespace TitanSouls.Forms {
             // chk_onyx_dead
             // 
             this.chk_onyx_dead.AutoSize = true;
-            this.chk_onyx_dead.Location = new System.Drawing.Point(739, 290);
+            this.chk_onyx_dead.Location = new System.Drawing.Point(725, 320);
             this.chk_onyx_dead.Name = "chk_onyx_dead";
             this.chk_onyx_dead.Size = new System.Drawing.Size(104, 24);
             this.chk_onyx_dead.TabIndex = 43;
@@ -492,7 +480,7 @@ namespace TitanSouls.Forms {
             // chk_yeti_dead
             // 
             this.chk_yeti_dead.AutoSize = true;
-            this.chk_yeti_dead.Location = new System.Drawing.Point(739, 260);
+            this.chk_yeti_dead.Location = new System.Drawing.Point(725, 290);
             this.chk_yeti_dead.Name = "chk_yeti_dead";
             this.chk_yeti_dead.Size = new System.Drawing.Size(95, 24);
             this.chk_yeti_dead.TabIndex = 42;
@@ -502,7 +490,7 @@ namespace TitanSouls.Forms {
             // chk_roller_dead
             // 
             this.chk_roller_dead.AutoSize = true;
-            this.chk_roller_dead.Location = new System.Drawing.Point(739, 230);
+            this.chk_roller_dead.Location = new System.Drawing.Point(725, 260);
             this.chk_roller_dead.Name = "chk_roller_dead";
             this.chk_roller_dead.Size = new System.Drawing.Size(110, 24);
             this.chk_roller_dead.TabIndex = 41;
@@ -512,7 +500,7 @@ namespace TitanSouls.Forms {
             // chk_ironknuckle_dead
             // 
             this.chk_ironknuckle_dead.AutoSize = true;
-            this.chk_ironknuckle_dead.Location = new System.Drawing.Point(739, 200);
+            this.chk_ironknuckle_dead.Location = new System.Drawing.Point(725, 230);
             this.chk_ironknuckle_dead.Name = "chk_ironknuckle_dead";
             this.chk_ironknuckle_dead.Size = new System.Drawing.Size(146, 24);
             this.chk_ironknuckle_dead.TabIndex = 40;
@@ -522,7 +510,7 @@ namespace TitanSouls.Forms {
             // chk_bomber_dead
             // 
             this.chk_bomber_dead.AutoSize = true;
-            this.chk_bomber_dead.Location = new System.Drawing.Point(739, 170);
+            this.chk_bomber_dead.Location = new System.Drawing.Point(725, 200);
             this.chk_bomber_dead.Name = "chk_bomber_dead";
             this.chk_bomber_dead.Size = new System.Drawing.Size(124, 24);
             this.chk_bomber_dead.TabIndex = 39;
@@ -532,7 +520,7 @@ namespace TitanSouls.Forms {
             // chk_truth_dead
             // 
             this.chk_truth_dead.AutoSize = true;
-            this.chk_truth_dead.Location = new System.Drawing.Point(739, 410);
+            this.chk_truth_dead.Location = new System.Drawing.Point(725, 440);
             this.chk_truth_dead.Name = "chk_truth_dead";
             this.chk_truth_dead.Size = new System.Drawing.Size(104, 24);
             this.chk_truth_dead.TabIndex = 49;
@@ -542,7 +530,7 @@ namespace TitanSouls.Forms {
             // chk_elder_dead
             // 
             this.chk_elder_dead.AutoSize = true;
-            this.chk_elder_dead.Location = new System.Drawing.Point(488, 440);
+            this.chk_elder_dead.Location = new System.Drawing.Point(725, 170);
             this.chk_elder_dead.Name = "chk_elder_dead";
             this.chk_elder_dead.Size = new System.Drawing.Size(105, 24);
             this.chk_elder_dead.TabIndex = 48;
@@ -552,7 +540,7 @@ namespace TitanSouls.Forms {
             // chk_ghost_dead
             // 
             this.chk_ghost_dead.AutoSize = true;
-            this.chk_ghost_dead.Location = new System.Drawing.Point(488, 410);
+            this.chk_ghost_dead.Location = new System.Drawing.Point(488, 470);
             this.chk_ghost_dead.Name = "chk_ghost_dead";
             this.chk_ghost_dead.Size = new System.Drawing.Size(109, 24);
             this.chk_ghost_dead.TabIndex = 47;
@@ -567,10 +555,52 @@ namespace TitanSouls.Forms {
             this.txt_hash.Size = new System.Drawing.Size(382, 27);
             this.txt_hash.TabIndex = 50;
             // 
+            // cb_map
+            // 
+            this.cb_map.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_map.FormattingEnabled = true;
+            this.cb_map.Location = new System.Drawing.Point(0, 0);
+            this.cb_map.Name = "cb_map";
+            this.cb_map.Size = new System.Drawing.Size(229, 28);
+            this.cb_map.TabIndex = 51;
+            // 
+            // chk_plant12_dead
+            // 
+            this.chk_plant12_dead.AutoSize = true;
+            this.chk_plant12_dead.Location = new System.Drawing.Point(488, 380);
+            this.chk_plant12_dead.Name = "chk_plant12_dead";
+            this.chk_plant12_dead.Size = new System.Drawing.Size(120, 24);
+            this.chk_plant12_dead.TabIndex = 52;
+            this.chk_plant12_dead.Text = "Plant12 Dead";
+            this.chk_plant12_dead.UseVisualStyleBackColor = true;
+            // 
+            // chk_eyecube2_dead
+            // 
+            this.chk_eyecube2_dead.AutoSize = true;
+            this.chk_eyecube2_dead.Location = new System.Drawing.Point(488, 230);
+            this.chk_eyecube2_dead.Name = "chk_eyecube2_dead";
+            this.chk_eyecube2_dead.Size = new System.Drawing.Size(134, 24);
+            this.chk_eyecube2_dead.TabIndex = 53;
+            this.chk_eyecube2_dead.Text = "Eyecube2 Dead";
+            this.chk_eyecube2_dead.UseVisualStyleBackColor = true;
+            // 
+            // cb_respawn_point
+            // 
+            this.cb_respawn_point.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_respawn_point.FormattingEnabled = true;
+            this.cb_respawn_point.Location = new System.Drawing.Point(0, 34);
+            this.cb_respawn_point.Name = "cb_respawn_point";
+            this.cb_respawn_point.Size = new System.Drawing.Size(229, 28);
+            this.cb_respawn_point.TabIndex = 54;
+            // 
             // EditorControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cb_respawn_point);
+            this.Controls.Add(this.chk_eyecube2_dead);
+            this.Controls.Add(this.chk_plant12_dead);
+            this.Controls.Add(this.cb_map);
             this.Controls.Add(this.txt_hash);
             this.Controls.Add(this.chk_truth_dead);
             this.Controls.Add(this.chk_elder_dead);
@@ -620,10 +650,9 @@ namespace TitanSouls.Forms {
             this.Controls.Add(this.num_kills);
             this.Controls.Add(this.num_deaths);
             this.Controls.Add(this.txt_player_position_x);
-            this.Controls.Add(this.txt_save_point);
-            this.Controls.Add(this.txt_map);
             this.Name = "EditorControl";
             this.Size = new System.Drawing.Size(909, 702);
+            this.Load += new System.EventHandler(this.EditorControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.num_deaths)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_kills)).EndInit();
             this.ResumeLayout(false);
@@ -632,9 +661,6 @@ namespace TitanSouls.Forms {
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_map;
-        private System.Windows.Forms.TextBox txt_save_point;
         private System.Windows.Forms.TextBox txt_player_position_x;
         private System.Windows.Forms.NumericUpDown num_deaths;
         private System.Windows.Forms.NumericUpDown num_kills;
@@ -684,5 +710,9 @@ namespace TitanSouls.Forms {
         private System.Windows.Forms.CheckBox chk_thesoul_dead;
         private System.Windows.Forms.CheckBox chk_truth_dead;
         private System.Windows.Forms.TextBox txt_hash;
+        private System.Windows.Forms.ComboBox cb_map;
+        private System.Windows.Forms.CheckBox chk_plant12_dead;
+        private System.Windows.Forms.CheckBox chk_eyecube2_dead;
+        private System.Windows.Forms.ComboBox cb_respawn_point;
     }
 }

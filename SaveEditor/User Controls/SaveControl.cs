@@ -34,10 +34,10 @@ namespace TitanSouls.Forms {
 
         private void SaveControl_Load(object sender, EventArgs e) {
             List<EditorState> slots = new List<EditorState> {
-                new EditorState(FileSlot.First, FileSlot.First.ToString()),
-                new EditorState(FileSlot.Second, FileSlot.Second.ToString()),
-                new EditorState(FileSlot.Third, FileSlot.Third.ToString()),
-                new EditorState(FileSlot.Fourth, FileSlot.Fourth.ToString())
+                new EditorState(FileSlot.One, FileSlot.One.ToString()),
+                new EditorState(FileSlot.Two, FileSlot.Two.ToString()),
+                new EditorState(FileSlot.Three, FileSlot.Three.ToString()),
+                new EditorState(FileSlot.Four, FileSlot.Four.ToString())
             };
 
             cb_select_save.DataSource = slots;

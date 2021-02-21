@@ -3,54 +3,131 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TitanSouls.Save;
 using TitanSouls.Save.Utils;
 
 namespace TitanSouls.Forms {
-    public partial class EditorControl : UserControl, IObserver<FileSlot> {
-        // @TODO
-        // User should add this somewhere.
-        private readonly string PATH = @"C:\Program Files (x86)\Steam\steamapps\common\Titan Souls\data\SAVE\";
+    public partial class SaveEditorForm : Form {
+        private SaveFile File { get; set; }
 
-        private SaveFile SaveFile { get; set; }
-        private FileSlot Slot { get; set; }
-
-        public EditorControl() {
+        public SaveEditorForm() {
             InitializeComponent();
 
-            SaveFile.FileChanged += OnFileChanged;
+            this.menu_nav_file_new.Click += menu_nav_file_new_Click;
+            this.menu_nav_file_open.Click += menu_nav_file_open_Click;
+            this.menu_nav_file_save.Click += menu_nav_file_save_Click;
+            this.menu_nav_file_save_as.Click += menu_nav_file_save_as_Click;
+
+            this.num_player_position_x.Maximum = int.MaxValue;
+            this.num_player_position_y.Maximum = int.MaxValue;
+            this.num_kills.Maximum = int.MaxValue;
+            this.num_deaths.Maximum = int.MaxValue;
+            this.num_player_position_x.Minimum = -1;
+            this.num_player_position_y.Minimum = -1;
+            this.num_kills.Minimum = -1;
+            this.num_deaths.Minimum = -1;
+
+            this.tt_map.SetToolTip(lbl_map_tt,
+                "The map the player will spawn into when the file loads / after death." +
+                "\nno_map will start the player at the beginning of the game."
+            );
+
+            this.tt_player_position.SetToolTip(lbl_player_position_tt,
+                "The x and y coordinate in which the player will spawn into when the file loads." +
+                "\nThe origin (0, 0) is in the top-left of the screen." +
+                "\nInputting negative numbers (-1, -1) or nothing will spawn the player at the entrance of the map."
+            );
+
+            this.tt_respawn_point.SetToolTip(lbl_respawn_point_tt,
+                "Where the player respawns after death.\n" +
+                "no_spawn will spawn the player at the entrance of the map on death."
+            );
+
+            this.timer_lbl_file_changed.Tick += new EventHandler((object Sender, EventArgs e) => {
+                this.lbl_file_saved.Visible = false;
+                this.timer_lbl_file_changed.Enabled = false;
+            });
         }
 
-        public void OnFileChanged(SaveFile file) {
-            var data = file.GetData();
-
-            this.SetFormElements(file, data);
+        private void menu_nav_file_new_Click(object sender, EventArgs e) {
+            this.SetSaveFile(new SaveFile());
         }
 
-        public void OnCompleted() {
-            throw new NotImplementedException();
+        private void menu_nav_file_open_Click(object sender, EventArgs e) {
+            var result = open_file_dialog.ShowDialog();
+
+            if (result == DialogResult.OK) { 
+                this.SetSaveFile(new SaveFile(open_file_dialog.FileName));
+            }
+
+            Console.WriteLine(result);
         }
 
-        public void OnError(Exception error) {
-            throw new NotImplementedException();
+        private void menu_nav_file_save_Click(object sender, EventArgs e) {
+            this.SaveFile(this.File.Path);
         }
 
-        public void OnNext(FileSlot slot) {
-            this.Slot = slot;
-            this.SaveFile = new SaveFile(this.PATH, slot);
-         
-            this.SetFormElements(this.SaveFile, this.SaveFile.GetData());
+        private void menu_nav_file_save_as_Click(object sender, EventArgs e) {
+            this.SaveFileToLocation();
         }
 
-        public void SetFormElements(SaveFile file, SaveData save_data) {
+        private void btn_save_Click(object sender, EventArgs e) {
+            this.SaveFile(this.File.Path);
+        }
+
+        private void btn_discard_Click(object sender, EventArgs e) {
+            this.File.SetData(this.File.GetData());
+            this.SetFormElements(this.File);
+        }
+
+        private void SaveFile(string path) {
+            if (path == null) {
+                this.SaveFileToLocation();
+            } else {
+                this.StoreFormData();
+                this.File.Save();
+                this.SetSaveFile(this.File);
+            }
+
+            this.ToggleFileSavedMessage();
+        }
+
+        private void SaveFileToLocation() {
+            var result = this.save_file_dialog.ShowDialog();
+
+            if (result == DialogResult.OK) {
+                this.StoreFormData();
+                this.File.Save(this.save_file_dialog.FileName);
+                this.SetSaveFile(this.File);
+            }
+        }
+
+        private void ToggleFileSavedMessage() {
+            this.timer_lbl_file_changed.Enabled = true;
+            this.lbl_file_saved.Visible = true;
+        }
+
+        private void SetSaveFile(SaveFile file) {
+            var save_file = file;
+
+            this.File = save_file;
+
+            this.lbl_file_name.Text = file.GetFilePath() ?? "new save file";
+            this.gb_file.Enabled = true;
+
+            this.SetFormElements(save_file);
+        }
+
+        public void SetFormElements(SaveFile file) {
+            var save_data = file.GetData();
+
             // Player
             this.cb_map.SelectedIndex = this.cb_map.FindString(Map.Mappings[save_data.Map.Id].ToString());
             this.cb_respawn_point.SelectedIndex = this.cb_respawn_point.FindString(save_data.RespawnPoint.Id);
-            this.txt_player_position_x.Text = save_data.PlayerPosition.X;
-            this.txt_player_position_y.Text = save_data.PlayerPosition.Y;
+            this.num_player_position_x.Text = save_data.PlayerPosition.X;
+            this.num_player_position_y.Text = save_data.PlayerPosition.Y;
 
             // Miscellaneous Flags
             this.chk_gamestarted.Checked = save_data.HasKey(KeyId.gamestarted);
@@ -105,20 +182,20 @@ namespace TitanSouls.Forms {
             this.chk_trespawn.Checked = Convert.ToBoolean(save_data.TitanRespawn.Value);
 
             // Time
-            this.txt_time.Text = Convert.ToString(save_data.Time.Value);
+            this.txt_time.Text = save_data.Time.ToReadableTime();
 
             // Hash
             this.txt_hash.Text = file.GetHash();
         }
 
         public void StoreFormData() {
-            var save_data = this.SaveFile.GetData();
+            var save_data = this.File.GetData();
 
             // Player
             save_data.Map.Id = Map.Mappings.GetKeyFromValue((MapId)cb_map.SelectedValue, "");
             save_data.RespawnPoint.Id = RespawnPoint.Mappings.GetKeyFromValue((RespawnPointId)cb_respawn_point.SelectedValue, "");
-            save_data.PlayerPosition.X = this.txt_player_position_x.Text;
-            save_data.PlayerPosition.Y = this.txt_player_position_y.Text;
+            save_data.PlayerPosition.X = this.num_player_position_x.Text;
+            save_data.PlayerPosition.Y = this.num_player_position_y.Text;
 
             // Miscellaneous Flags
             save_data.ToggleKey(KeyId.gamestarted, this.chk_gamestarted.Checked);
@@ -173,26 +250,17 @@ namespace TitanSouls.Forms {
             save_data.TitanRespawn.Value = Convert.ToInt32(this.chk_trespawn.Checked);
 
             // Update save data.
-            this.SaveFile.SetData(save_data);
+            this.File.SetData(save_data);
         }
 
-        private void btn_discard_changes_Click(object sender, EventArgs e) {
-            this.SaveFile = new SaveFile(this.PATH, this.Slot);
-            this.SetFormElements(this.SaveFile, this.SaveFile.GetData());
-        }
-
-        private void btn_save_file_Click(object sender, EventArgs e) {
-            this.StoreFormData();
-            this.SaveFile.Save();
-        }
-
-        private void btn_new_save_file_Click(object sender, EventArgs e) {
-            this.SaveFile.SetData(SaveData.CreateEmptyData());
-        }
-
-        private void EditorControl_Load(object sender, EventArgs e) {
+        private void SaveEditorForm_Load(object sender, EventArgs e) {
             cb_map.DataSource = Enum.GetValues(typeof(MapId));
             cb_respawn_point.DataSource = Enum.GetValues(typeof(RespawnPointId));
+        }
+
+        private void btn_clear_player_position_Click(object sender, EventArgs e) {
+            this.num_player_position_x.Text = "-1";
+            this.num_player_position_y.Text = "-1";
         }
     }
 }

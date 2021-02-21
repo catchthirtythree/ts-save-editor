@@ -7,10 +7,12 @@ namespace TitanSouls.Save {
     public enum TitanId {
         [XmlEnum("sludgeheart")] sludgeheart,
         [XmlEnum("eyecube")] eyecube,
+        [XmlEnum("EyeCube2")] EyeCube2,
         [XmlEnum("brainfreeze")] brainfreeze,
         [XmlEnum("colossus")] colossus,
         [XmlEnum("mushroom")] mushroom,
         [XmlEnum("plant")] plant,
+        [XmlEnum("plant12")] plant12,
         [XmlEnum("knight")] knight,
         [XmlEnum("avarice")] avarice,
         [XmlEnum("ghost")] ghost,

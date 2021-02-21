@@ -42,7 +42,7 @@ namespace TitanSouls.Forms {
             this.ec_edit_save.Size = new System.Drawing.Size(909, 702);
             this.ec_edit_save.TabIndex = 1;
             // 
-            // Form1
+            // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -51,7 +51,7 @@ namespace TitanSouls.Forms {
             this.Controls.Add(this.ec_edit_save);
             this.Controls.Add(this.sc_select_save);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "EditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Titan Souls Save Modifier";
             this.Load += new System.EventHandler(this.EditForm_Load);

@@ -72,7 +72,7 @@ namespace TitanSouls.Save {
         public Map Map { get; set; }
 
         [XmlElement("SavePoint")]
-        public SavePoint SavePoint { get; set; }
+        public RespawnPoint RespawnPoint { get; set; }
 
         [XmlElement("Position")]
         public PlayerPosition PlayerPosition { get; set; }
@@ -110,6 +110,8 @@ namespace TitanSouls.Save {
 
         #endregion
 
+        #region Static Get Functions
+
         public static SaveData CreateFromData(string data) {
             var serializer = new XmlSerializer(typeof(SaveData));
 
@@ -118,10 +120,10 @@ namespace TitanSouls.Save {
             }
         }
 
-        public static SaveData CreateEmpty() {
+        public static SaveData CreateEmptyData() {
             return new SaveData() {
                 Map = new Map() { Id = "" },
-                SavePoint = new SavePoint() { Id = "" },
+                RespawnPoint = new RespawnPoint() { Id = "" },
                 PlayerPosition = new PlayerPosition() { X = "-1", Y = "-1" },
                 PlayerDeaths = new Deaths() { Count = "0" },
                 TitanKills = new Kills() { Count = "0" },
@@ -134,6 +136,33 @@ namespace TitanSouls.Save {
                 TitanRespawn = new TitanRespawn() { Value = 0 },
                 Time = new Time() { Value = 0 }
             };
+        }
+
+        #endregion Static Get Functions
+
+        public string AsString() {
+            var serializer = new XmlSerializer(this.GetType());
+
+            var sb = new StringBuilder();
+            var settings = new XmlWriterSettings() {
+                Indent = true,
+                IndentChars = "    ",
+                // Remove declaration because the encoding ruins the md5 generation.
+                // <?xml version="1.0" encoding="utf-16"?>
+                OmitXmlDeclaration = true
+            };
+
+            var xml_namespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+            using (var writer = XmlWriter.Create(sb, settings)) {
+                serializer.Serialize(writer, this, xml_namespaces);
+            }
+
+            // Add the declaration as it's expected.
+            // <?xml version="1.0"?>
+            var xml_declaration = @"<?xml version=""1.0"" ?>" + Environment.NewLine;
+            sb = sb.Insert(0, xml_declaration);
+
+            return sb.ToString();
         }
 
         public void ToggleKey(KeyId id, bool state) {
@@ -159,31 +188,6 @@ namespace TitanSouls.Save {
 
         private void RemoveKey(KeyId id) {
             this.Keys.RemoveAll(key => key.Id == id);
-        }
-
-        public string AsString() {
-            var serializer = new XmlSerializer(this.GetType());
-
-            var sb = new StringBuilder();
-            var settings = new XmlWriterSettings() {
-                Indent = true,
-                IndentChars = "    ",
-                // Remove declaration because the encoding ruins the md5 generation.
-                // <?xml version="1.0" encoding="utf-16"?>
-                OmitXmlDeclaration = true
-            };
-
-            var xml_namespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-            using (var writer = XmlWriter.Create(sb, settings)) {
-                serializer.Serialize(writer, this, xml_namespaces);
-            }
-
-            // Add the declaration as it's expected.
-            // <?xml version="1.0"?>
-            var xml_declaration = @"<?xml version=""1.0"" ?>" + Environment.NewLine;
-            sb = sb.Insert(0, xml_declaration);
-
-            return sb.ToString();
         }
     }
 }

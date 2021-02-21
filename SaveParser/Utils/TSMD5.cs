@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace TitanSouls.Save {
+namespace TitanSouls.Save.Utils {
     public class TSMD5 {
         public static string Generate(string input) {
             using var md5 = MD5.Create();

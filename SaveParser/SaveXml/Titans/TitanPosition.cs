@@ -10,11 +10,13 @@ namespace TitanSouls.Save {
             get;
             set;
         }
+
         [XmlAttribute("y")]
         public string Y {
             get;
             set;
         }
+
         [XmlAttribute("z")]
         public string Z {
             get;

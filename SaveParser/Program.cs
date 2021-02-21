@@ -6,25 +6,30 @@ using System.Xml.Serialization;
 namespace TitanSouls.Save {
     public class Program {
         public static void Main(string[] args) {
-            var game_path = @"C:\Program Files (x86)\Steam\steamapps\common\Titan Souls";
-            var save_reader = new SaveReader(game_path);
-            var save_file = new SaveFile(save_reader, FileSlot.First, Program.FileChangedHandler);
+            SaveFile.FileChanged += Program.OnFileChanged;
 
-            var save_data = save_file.GetSaveData();
-            var contents = save_data.AsString() + SaveFile.SALT;
+            var save_path = @"C:\Program Files (x86)\Steam\steamapps\common\Titan Souls\data\SAVE\";
 
-            Console.WriteLine(contents);
-            Console.WriteLine(save_file.Hash);
+            var slot = FileSlot.One;
+            var files = new SaveFiles(save_path);
+            var file1 = files.GetSaveFile(slot);
 
-            //save_file.Save(save_reader);
+            Console.WriteLine(file1.GetHash());
 
-            //var states = new SaveStates();
+            var data1 = file1.GetData();
 
-            //Console.WriteLine(states.GamePath);
+            data1.ToggleKey(KeyId.eyecube_door, false);
+            data1.ToggleKey(KeyId.king_started, false);
+            data1.ToggleKey(KeyId.start_eyedoor, false);
+            data1.ToggleKey(KeyId.tutorial_door, false);
+
+            files.SetSaveFile(slot, data1);
+
+            Console.WriteLine(data1.Time.ToReadableTime());
         }
 
-        public static void FileChangedHandler(object obj, PropertyChangedEventArgs args) {
-            Console.WriteLine(@"{0} => {1}", obj.ToString(), args.PropertyName.ToString());
+        public static void OnFileChanged(SaveFile file) {
+            Console.WriteLine(file.GetData().AsString());
         }
     }
 }
