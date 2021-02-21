@@ -6,6 +6,7 @@
     <RootNamespace>TitanSouls.Forms</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <AssemblyName>SaveEditor</AssemblyName>
+    <ApplicationIcon>32.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

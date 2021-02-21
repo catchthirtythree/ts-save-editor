@@ -25,6 +25,7 @@ namespace TitanSouls.Forms {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaveEditorForm));
             this.open_file_dialog = new System.Windows.Forms.OpenFileDialog();
             this.tc_save_file = new System.Windows.Forms.TabControl();
             this.tp_general = new System.Windows.Forms.TabPage();
@@ -967,6 +968,7 @@ namespace TitanSouls.Forms {
             this.ClientSize = new System.Drawing.Size(798, 635);
             this.Controls.Add(this.gb_file);
             this.Controls.Add(this.nav_menu_strip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.nav_menu_strip;
             this.MaximizeBox = false;
             this.Name = "SaveEditorForm";
