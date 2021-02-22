@@ -74,6 +74,8 @@ namespace TitanSouls.Forms {
             this.chk_eyecube_dead = new System.Windows.Forms.CheckBox();
             this.chk_sludgeheart_dead = new System.Windows.Forms.CheckBox();
             this.tp_misc = new System.Windows.Forms.TabPage();
+            this.lbl_king_started_tt = new System.Windows.Forms.Label();
+            this.lbl_gamestarted_tt = new System.Windows.Forms.Label();
             this.chk_titan = new System.Windows.Forms.CheckBox();
             this.chk_truthdoorlook = new System.Windows.Forms.CheckBox();
             this.chk_kingtitan = new System.Windows.Forms.CheckBox();
@@ -106,12 +108,17 @@ namespace TitanSouls.Forms {
             this.menu_nav_file_open = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_nav_file_save = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_nav_file_save_as = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_nav_reload = new System.Windows.Forms.ToolStripMenuItem();
             this.save_file_dialog = new System.Windows.Forms.SaveFileDialog();
             this.tt_respawn_point = new System.Windows.Forms.ToolTip(this.components);
             this.tt_map = new System.Windows.Forms.ToolTip(this.components);
             this.tt_player_position = new System.Windows.Forms.ToolTip(this.components);
             this.tt_titan_respawn_mode = new System.Windows.Forms.ToolTip(this.components);
             this.timer_lbl_file_changed = new System.Windows.Forms.Timer(this.components);
+            this.tt_gamestarted = new System.Windows.Forms.ToolTip(this.components);
+            this.tt_king_started = new System.Windows.Forms.ToolTip(this.components);
+            this.lbl_truthdoorlook_tt = new System.Windows.Forms.Label();
+            this.tt_truthdoorlook = new System.Windows.Forms.ToolTip(this.components);
             this.tc_save_file.SuspendLayout();
             this.tp_general.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_player_position_y)).BeginInit();
@@ -453,9 +460,9 @@ namespace TitanSouls.Forms {
             this.chk_ghost_dead.AutoSize = true;
             this.chk_ghost_dead.Location = new System.Drawing.Point(182, 316);
             this.chk_ghost_dead.Name = "chk_ghost_dead";
-            this.chk_ghost_dead.Size = new System.Drawing.Size(109, 24);
+            this.chk_ghost_dead.Size = new System.Drawing.Size(138, 24);
             this.chk_ghost_dead.TabIndex = 70;
-            this.chk_ghost_dead.Text = "Ghost Dead";
+            this.chk_ghost_dead.Text = "Gol-Hevel Dead";
             this.chk_ghost_dead.UseVisualStyleBackColor = true;
             // 
             // chk_thesoul_dead
@@ -473,9 +480,9 @@ namespace TitanSouls.Forms {
             this.chk_guardian_dead.AutoSize = true;
             this.chk_guardian_dead.Location = new System.Drawing.Point(419, 226);
             this.chk_guardian_dead.Name = "chk_guardian_dead";
-            this.chk_guardian_dead.Size = new System.Drawing.Size(131, 24);
+            this.chk_guardian_dead.Size = new System.Drawing.Size(121, 24);
             this.chk_guardian_dead.TabIndex = 68;
-            this.chk_guardian_dead.Text = "Guardian Dead";
+            this.chk_guardian_dead.Text = "Gol-Set Dead";
             this.chk_guardian_dead.UseVisualStyleBackColor = true;
             // 
             // chk_snowface_dead
@@ -483,9 +490,9 @@ namespace TitanSouls.Forms {
             this.chk_snowface_dead.AutoSize = true;
             this.chk_snowface_dead.Location = new System.Drawing.Point(419, 196);
             this.chk_snowface_dead.Name = "chk_snowface_dead";
-            this.chk_snowface_dead.Size = new System.Drawing.Size(135, 24);
+            this.chk_snowface_dead.Size = new System.Drawing.Size(116, 24);
             this.chk_snowface_dead.TabIndex = 67;
-            this.chk_snowface_dead.Text = "Snowface Dead";
+            this.chk_snowface_dead.Text = "Stratus Dead";
             this.chk_snowface_dead.UseVisualStyleBackColor = true;
             // 
             // chk_onyx_dead
@@ -493,9 +500,9 @@ namespace TitanSouls.Forms {
             this.chk_onyx_dead.AutoSize = true;
             this.chk_onyx_dead.Location = new System.Drawing.Point(419, 166);
             this.chk_onyx_dead.Name = "chk_onyx_dead";
-            this.chk_onyx_dead.Size = new System.Drawing.Size(104, 24);
+            this.chk_onyx_dead.Size = new System.Drawing.Size(116, 24);
             this.chk_onyx_dead.TabIndex = 66;
-            this.chk_onyx_dead.Text = "Onyx Dead";
+            this.chk_onyx_dead.Text = "Onyxia Dead";
             this.chk_onyx_dead.UseVisualStyleBackColor = true;
             // 
             // chk_yeti_dead
@@ -513,9 +520,9 @@ namespace TitanSouls.Forms {
             this.chk_roller_dead.AutoSize = true;
             this.chk_roller_dead.Location = new System.Drawing.Point(419, 106);
             this.chk_roller_dead.Name = "chk_roller_dead";
-            this.chk_roller_dead.Size = new System.Drawing.Size(110, 24);
+            this.chk_roller_dead.Size = new System.Drawing.Size(137, 24);
             this.chk_roller_dead.TabIndex = 64;
-            this.chk_roller_dead.Text = "Roller Dead";
+            this.chk_roller_dead.Text = "Rol-Qayin Dead";
             this.chk_roller_dead.UseVisualStyleBackColor = true;
             // 
             // chk_ironknuckle_dead
@@ -523,9 +530,9 @@ namespace TitanSouls.Forms {
             this.chk_ironknuckle_dead.AutoSize = true;
             this.chk_ironknuckle_dead.Location = new System.Drawing.Point(419, 76);
             this.chk_ironknuckle_dead.Name = "chk_ironknuckle_dead";
-            this.chk_ironknuckle_dead.Size = new System.Drawing.Size(146, 24);
+            this.chk_ironknuckle_dead.Size = new System.Drawing.Size(138, 24);
             this.chk_ironknuckle_dead.TabIndex = 63;
-            this.chk_ironknuckle_dead.Text = "Ironknuckle Dead";
+            this.chk_ironknuckle_dead.Text = "Gol-Qayin Dead";
             this.chk_ironknuckle_dead.UseVisualStyleBackColor = true;
             // 
             // chk_bomber_dead
@@ -533,9 +540,9 @@ namespace TitanSouls.Forms {
             this.chk_bomber_dead.AutoSize = true;
             this.chk_bomber_dead.Location = new System.Drawing.Point(419, 46);
             this.chk_bomber_dead.Name = "chk_bomber_dead";
-            this.chk_bomber_dead.Size = new System.Drawing.Size(124, 24);
+            this.chk_bomber_dead.Size = new System.Drawing.Size(141, 24);
             this.chk_bomber_dead.TabIndex = 62;
-            this.chk_bomber_dead.Text = "Bomber Dead";
+            this.chk_bomber_dead.Text = "Mol-Qayin Dead";
             this.chk_bomber_dead.UseVisualStyleBackColor = true;
             // 
             // chk_avarice_dead
@@ -553,9 +560,9 @@ namespace TitanSouls.Forms {
             this.chk_knight_dead.AutoSize = true;
             this.chk_knight_dead.Location = new System.Drawing.Point(182, 256);
             this.chk_knight_dead.Name = "chk_knight_dead";
-            this.chk_knight_dead.Size = new System.Drawing.Size(114, 24);
+            this.chk_knight_dead.Size = new System.Drawing.Size(170, 24);
             this.chk_knight_dead.TabIndex = 60;
-            this.chk_knight_dead.Text = "Knight Dead";
+            this.chk_knight_dead.Text = "Knight Elhanan Dead";
             this.chk_knight_dead.UseVisualStyleBackColor = true;
             // 
             // chk_plant_dead
@@ -563,9 +570,9 @@ namespace TitanSouls.Forms {
             this.chk_plant_dead.AutoSize = true;
             this.chk_plant_dead.Location = new System.Drawing.Point(182, 196);
             this.chk_plant_dead.Name = "chk_plant_dead";
-            this.chk_plant_dead.Size = new System.Drawing.Size(104, 24);
+            this.chk_plant_dead.Size = new System.Drawing.Size(137, 24);
             this.chk_plant_dead.TabIndex = 59;
-            this.chk_plant_dead.Text = "Plant Dead";
+            this.chk_plant_dead.Text = "Vinethesis Dead";
             this.chk_plant_dead.UseVisualStyleBackColor = true;
             // 
             // chk_mushroom_dead
@@ -573,9 +580,9 @@ namespace TitanSouls.Forms {
             this.chk_mushroom_dead.AutoSize = true;
             this.chk_mushroom_dead.Location = new System.Drawing.Point(182, 166);
             this.chk_mushroom_dead.Name = "chk_mushroom_dead";
-            this.chk_mushroom_dead.Size = new System.Drawing.Size(142, 24);
+            this.chk_mushroom_dead.Size = new System.Drawing.Size(116, 24);
             this.chk_mushroom_dead.TabIndex = 58;
-            this.chk_mushroom_dead.Text = "Mushroom Dead";
+            this.chk_mushroom_dead.Text = "Obello Dead";
             this.chk_mushroom_dead.UseVisualStyleBackColor = true;
             // 
             // chk_colossus_dead
@@ -583,9 +590,9 @@ namespace TitanSouls.Forms {
             this.chk_colossus_dead.AutoSize = true;
             this.chk_colossus_dead.Location = new System.Drawing.Point(182, 136);
             this.chk_colossus_dead.Name = "chk_colossus_dead";
-            this.chk_colossus_dead.Size = new System.Drawing.Size(128, 24);
+            this.chk_colossus_dead.Size = new System.Drawing.Size(125, 24);
             this.chk_colossus_dead.TabIndex = 57;
-            this.chk_colossus_dead.Text = "Colossus Dead";
+            this.chk_colossus_dead.Text = "Gol-Iath Dead";
             this.chk_colossus_dead.UseVisualStyleBackColor = true;
             // 
             // chk_brainfreeze_dead
@@ -620,6 +627,9 @@ namespace TitanSouls.Forms {
             // 
             // tp_misc
             // 
+            this.tp_misc.Controls.Add(this.lbl_truthdoorlook_tt);
+            this.tp_misc.Controls.Add(this.lbl_king_started_tt);
+            this.tp_misc.Controls.Add(this.lbl_gamestarted_tt);
             this.tp_misc.Controls.Add(this.chk_titan);
             this.tp_misc.Controls.Add(this.chk_truthdoorlook);
             this.tp_misc.Controls.Add(this.chk_kingtitan);
@@ -642,6 +652,26 @@ namespace TitanSouls.Forms {
             this.tp_misc.TabIndex = 2;
             this.tp_misc.Text = "Misc. Flags";
             this.tp_misc.UseVisualStyleBackColor = true;
+            // 
+            // lbl_king_started_tt
+            // 
+            this.lbl_king_started_tt.AutoSize = true;
+            this.lbl_king_started_tt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.lbl_king_started_tt.Location = new System.Drawing.Point(538, 137);
+            this.lbl_king_started_tt.Name = "lbl_king_started_tt";
+            this.lbl_king_started_tt.Size = new System.Drawing.Size(26, 20);
+            this.lbl_king_started_tt.TabIndex = 78;
+            this.lbl_king_started_tt.Text = "(?)";
+            // 
+            // lbl_gamestarted_tt
+            // 
+            this.lbl_gamestarted_tt.AutoSize = true;
+            this.lbl_gamestarted_tt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.lbl_gamestarted_tt.Location = new System.Drawing.Point(310, 17);
+            this.lbl_gamestarted_tt.Name = "lbl_gamestarted_tt";
+            this.lbl_gamestarted_tt.Size = new System.Drawing.Size(26, 20);
+            this.lbl_gamestarted_tt.TabIndex = 77;
+            this.lbl_gamestarted_tt.Text = "(?)";
             // 
             // chk_titan
             // 
@@ -910,7 +940,8 @@ namespace TitanSouls.Forms {
             // 
             this.nav_menu_strip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.nav_menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menu_nav_file});
+            this.menu_nav_file,
+            this.menu_nav_reload});
             this.nav_menu_strip.Location = new System.Drawing.Point(0, 0);
             this.nav_menu_strip.Name = "nav_menu_strip";
             this.nav_menu_strip.Size = new System.Drawing.Size(798, 28);
@@ -951,6 +982,13 @@ namespace TitanSouls.Forms {
             this.menu_nav_file_save_as.Size = new System.Drawing.Size(152, 26);
             this.menu_nav_file_save_as.Text = "Save As...";
             // 
+            // menu_nav_reload
+            // 
+            this.menu_nav_reload.Enabled = false;
+            this.menu_nav_reload.Name = "menu_nav_reload";
+            this.menu_nav_reload.Size = new System.Drawing.Size(105, 24);
+            this.menu_nav_reload.Text = "Reload Save";
+            // 
             // save_file_dialog
             // 
             this.save_file_dialog.DefaultExt = "txt";
@@ -960,6 +998,16 @@ namespace TitanSouls.Forms {
             // timer_lbl_file_changed
             // 
             this.timer_lbl_file_changed.Interval = 4000;
+            // 
+            // lbl_truthdoorlook_tt
+            // 
+            this.lbl_truthdoorlook_tt.AutoSize = true;
+            this.lbl_truthdoorlook_tt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.lbl_truthdoorlook_tt.Location = new System.Drawing.Point(563, 197);
+            this.lbl_truthdoorlook_tt.Name = "lbl_truthdoorlook_tt";
+            this.lbl_truthdoorlook_tt.Size = new System.Drawing.Size(26, 20);
+            this.lbl_truthdoorlook_tt.TabIndex = 79;
+            this.lbl_truthdoorlook_tt.Text = "(?)";
             // 
             // SaveEditorForm
             // 
@@ -1084,5 +1132,12 @@ namespace TitanSouls.Forms {
         private System.Windows.Forms.Button btn_clear_player_position;
         private System.Windows.Forms.Label lbl_current_file;
         private System.Windows.Forms.Label lbl_file_name;
+        private System.Windows.Forms.Label lbl_gamestarted_tt;
+        private System.Windows.Forms.ToolTip tt_gamestarted;
+        private System.Windows.Forms.ToolStripMenuItem menu_nav_reload;
+        private System.Windows.Forms.Label lbl_king_started_tt;
+        private System.Windows.Forms.ToolTip tt_king_started;
+        private System.Windows.Forms.Label lbl_truthdoorlook_tt;
+        private System.Windows.Forms.ToolTip tt_truthdoorlook;
     }
 }

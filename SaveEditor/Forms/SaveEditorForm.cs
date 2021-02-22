@@ -19,6 +19,7 @@ namespace TitanSouls.Forms {
             this.menu_nav_file_open.Click += menu_nav_file_open_Click;
             this.menu_nav_file_save.Click += menu_nav_file_save_Click;
             this.menu_nav_file_save_as.Click += menu_nav_file_save_as_Click;
+            this.menu_nav_reload.Click += menu_nav_reload_Click;
 
             this.num_player_position_x.Maximum = int.MaxValue;
             this.num_player_position_y.Maximum = int.MaxValue;
@@ -45,14 +46,31 @@ namespace TitanSouls.Forms {
                 "no_spawn will spawn the player at the entrance of the map on death."
             );
 
+            this.tt_gamestarted.SetToolTip(lbl_gamestarted_tt,
+                "This flag tells the game not to play the opening cutscene."
+            );
+
+            this.tt_king_started.SetToolTip(lbl_king_started_tt,
+                "This flag tells the game that you have destroyed the cocoon that Soul is resting in."
+            );
+
+            this.tt_king_started.SetToolTip(lbl_king_started_tt,
+                "This flag tells the game that you have watched the cutscene after destroying the cocoon that Soul is resting in."
+            );
+
+            this.tt_truthdoorlook.SetToolTip(lbl_truthdoorlook_tt,
+                "This flag tells the game that you have watched the cutscene where the camera pans to the truth door after killing soul."
+            );
+
             this.timer_lbl_file_changed.Tick += new EventHandler((object Sender, EventArgs e) => {
                 this.lbl_file_saved.Visible = false;
                 this.timer_lbl_file_changed.Enabled = false;
             });
         }
 
-        private void menu_nav_file_new_Click(object sender, EventArgs e) {
+        private void menu_nav_file_new_Click(object sender, EventArgs e) { 
             this.SetSaveFile(new SaveFile());
+            this.menu_nav_reload.Enabled = false;
         }
 
         private void menu_nav_file_open_Click(object sender, EventArgs e) {
@@ -71,6 +89,11 @@ namespace TitanSouls.Forms {
 
         private void menu_nav_file_save_as_Click(object sender, EventArgs e) {
             this.SaveFileToLocation();
+        }
+
+        private void menu_nav_reload_Click(object sender, EventArgs e) {
+            this.File = new SaveFile(this.File.Path);
+            this.SetFormElements(this.File);
         }
 
         private void btn_save_Click(object sender, EventArgs e) {
@@ -121,6 +144,7 @@ namespace TitanSouls.Forms {
 
             this.lbl_file_name.Text = file.GetFilePath() ?? "new save file";
             this.gb_file.Enabled = true;
+            this.menu_nav_reload.Enabled = true;
 
             this.SetFormElements(save_file);
         }

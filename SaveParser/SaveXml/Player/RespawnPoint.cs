@@ -12,7 +12,9 @@ namespace TitanSouls.Save {
         graveyard_spawn,
         magma_spawn,
         snow_spawn,
-        bridge_elevator
+        bridge_elevator,
+        guardian_spawn,
+        king_spawn
     }
 
     [Serializable]
@@ -26,7 +28,9 @@ namespace TitanSouls.Save {
             { "graveyard_spawn", RespawnPointId.graveyard_spawn },
             { "magma_spawn", RespawnPointId.magma_spawn },
             { "snow_spawn", RespawnPointId.snow_spawn },
-            { "bridge_elevator", RespawnPointId.bridge_elevator }
+            { "bridge_elevator", RespawnPointId.bridge_elevator },
+            { "guardian_spawn", RespawnPointId.guardian_spawn },
+            { "king_spawn", RespawnPointId.king_spawn }
         };
 
         [XmlAttribute("id")]
