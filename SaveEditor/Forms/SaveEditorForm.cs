@@ -82,6 +82,11 @@ namespace TitanSouls.Forms {
             this.SetFormElements(this.File);
         }
 
+        private void btn_clear_player_position_Click(object sender, EventArgs e) {
+            this.num_player_position_x.Text = "-1";
+            this.num_player_position_y.Text = "-1";
+        }
+
         private void SaveFile(string path) {
             if (path == null) {
                 this.SaveFileToLocation();
@@ -256,11 +261,6 @@ namespace TitanSouls.Forms {
         private void SaveEditorForm_Load(object sender, EventArgs e) {
             cb_map.DataSource = Enum.GetValues(typeof(MapId));
             cb_respawn_point.DataSource = Enum.GetValues(typeof(RespawnPointId));
-        }
-
-        private void btn_clear_player_position_Click(object sender, EventArgs e) {
-            this.num_player_position_x.Text = "-1";
-            this.num_player_position_y.Text = "-1";
         }
     }
 }
