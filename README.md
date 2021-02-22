@@ -1,4 +1,4 @@
-# TitanSoulsSaveEditor
+# ts-save-editor
 
 - Create new save files.
 - Edit existing save files.
